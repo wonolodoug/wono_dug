@@ -21,23 +21,25 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          logIn(driver, "dnbgarner@gmail.com", "password");
          }
       catch (Exception e) {
-         logError("JRIOrder", e);
+         logError("JRIOrder_setup", e);
          }
    }
 
    @AfterMethod(groups={"wonoloJRI"})
    public void teardown() throws Exception {
       //cleanup/delete event after test
+      driver.close();
    }
 
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
    public void JRIPostJob(String jobName) throws Exception {
       try {
          log(jobName);
+         //TODO:  steps to post a job
          driver.findElement(By.cssSelector(signin)).click();
          Thread.sleep(1000);
       } catch (Exception e) {
-         logError("JRIOrder", e);
+         logError("JRIPostJob", e);
       }
    }
 
@@ -45,10 +47,11 @@ public class Wonolo_JRI_Test extends WonoloMethods {
    public void JRICreateTeam(String teamName) throws Exception {
       try {
          log(teamName);
+         //TODO: steps to create a team
          driver.findElement(By.cssSelector(signin)).click();
          Thread.sleep(1000);
       } catch (Exception e) {
-         logError("JRIOrder", e);
+         logError("JRICreateTeam", e);
       }
    }
 }

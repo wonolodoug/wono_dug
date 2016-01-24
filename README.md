@@ -3,7 +3,7 @@
  https://github.com/wonolodoug
  username: wonolodoug
  password: sandman1
- repo:     wonolo
+ repo:     wono_dug
 
 #Test Plan########################################################################
 Project Wonolo JRI
