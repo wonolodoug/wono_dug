@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Wonolo_JRI_Test extends WonoloMethods {
 
+   //add any step here that is necessary to all test prior to executing test steps
    @BeforeMethod(groups={"wonoloJRI"})
    public void setup() throws Exception {
       try {
@@ -25,6 +26,7 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          }
    }
 
+   //teardown is used to clean up things common to all tests
    @AfterMethod(groups={"wonoloJRI"})
    public void teardown() throws Exception {
       //cleanup/delete event after test
@@ -36,10 +38,21 @@ public class Wonolo_JRI_Test extends WonoloMethods {
       try {
          log(jobName);
          //TODO:  steps to post a job
+         //TODO:  click add job
+         //TODO:  add job info -- start/end date
+         //TODO:  click save job
+         //TODO:  click post job
+         //TODO:  wono_assertTrue job appers in active posted jobs
          driver.findElement(By.cssSelector(signin)).click();
          Thread.sleep(1000);
       } catch (Exception e) {
          logError("JRIPostJob", e);
+      }
+      //Finally - used to clean up test data specific to a test
+      finally {
+         //TODO:clean up -- if job exists, delete the new job,
+         //TODO: otherwise do no cleanup the test failed before the job was created
+         //TODO: wono_ssertTrue -- job does not appear in posted jobs
       }
    }
 
@@ -52,6 +65,9 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          Thread.sleep(1000);
       } catch (Exception e) {
          logError("JRICreateTeam", e);
+      }
+      finally {
+         //TODO
       }
    }
 }
