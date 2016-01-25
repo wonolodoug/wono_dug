@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_wonolo_jri" default="compile.module.wonolo_jri">
+  <dirname property="module.wonolo_jri.basedir" file="${ant.file.module_wonolo_jri}"/>
+  
+  <property name="module.jdk.home.wonolo_jri" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.wonolo_jri" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.wonolo_jri" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.wonolo_jri" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="wonolo_jri.output.dir" value="${module.wonolo_jri.basedir}/target/classes"/>
+  <property name="wonolo_jri.testoutput.dir" value="${module.wonolo_jri.basedir}/target/test-classes"/>
+  
+  <path id="wonolo_jri.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="wonolo_jri.module.production.classpath">
+    <path refid="${module.jdk.classpath.wonolo_jri}"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.1_3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-htmlunit-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.18.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.17.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.11.0.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_net.sourceforge.nekohtml:nekohtml:1.9.22.classpath"/>
+    <path refid="library.maven:_net.sourceforge.cssparser:cssparser:0.9.16.classpath"/>
+    <path refid="library.maven:_org.w3c.css:sac:1.3.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:4.1.0.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna-platform:4.1.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:2.48.2.classpath"/>
+    <path refid="library.maven:_org.webbitserver:webbit:0.4.14.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.2.final.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-leg-rc:2.48.2.classpath"/>
+    <path refid="library.maven:_org.testng:testng:6.9.4.classpath"/>
+    <path refid="library.maven:_org.beanshell:bsh:2.0b4.classpath"/>
+    <path refid="library.maven:_com.beust:jcommander:1.48.classpath"/>
+    <path refid="library.maven:_com.googlecode.json-simple:json-simple:1.1.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:16.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.6.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+    <path refid="library.maven:_com.github.javafaker:javafaker:0.7.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.13.classpath"/>
+  </path>
+  
+  <path id="wonolo_jri.runtime.production.module.classpath">
+    <pathelement location="${wonolo_jri.output.dir}"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.1_3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-htmlunit-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.18.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.17.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.11.0.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_net.sourceforge.nekohtml:nekohtml:1.9.22.classpath"/>
+    <path refid="library.maven:_net.sourceforge.cssparser:cssparser:0.9.16.classpath"/>
+    <path refid="library.maven:_org.w3c.css:sac:1.3.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:4.1.0.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna-platform:4.1.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:2.48.2.classpath"/>
+    <path refid="library.maven:_org.webbitserver:webbit:0.4.14.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.2.final.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-leg-rc:2.48.2.classpath"/>
+    <path refid="library.maven:_org.testng:testng:6.9.4.classpath"/>
+    <path refid="library.maven:_org.beanshell:bsh:2.0b4.classpath"/>
+    <path refid="library.maven:_com.beust:jcommander:1.48.classpath"/>
+    <path refid="library.maven:_com.googlecode.json-simple:json-simple:1.1.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:16.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.6.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+    <path refid="library.maven:_com.github.javafaker:javafaker:0.7.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.13.classpath"/>
+  </path>
+  
+  <path id="wonolo_jri.module.classpath">
+    <path refid="${module.jdk.classpath.wonolo_jri}"/>
+    <pathelement location="${wonolo_jri.output.dir}"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.1_3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-htmlunit-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.18.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.17.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.11.0.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_net.sourceforge.nekohtml:nekohtml:1.9.22.classpath"/>
+    <path refid="library.maven:_net.sourceforge.cssparser:cssparser:0.9.16.classpath"/>
+    <path refid="library.maven:_org.w3c.css:sac:1.3.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:4.1.0.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna-platform:4.1.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:2.48.2.classpath"/>
+    <path refid="library.maven:_org.webbitserver:webbit:0.4.14.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.2.final.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-leg-rc:2.48.2.classpath"/>
+    <path refid="library.maven:_org.testng:testng:6.9.4.classpath"/>
+    <path refid="library.maven:_org.beanshell:bsh:2.0b4.classpath"/>
+    <path refid="library.maven:_com.beust:jcommander:1.48.classpath"/>
+    <path refid="library.maven:_com.googlecode.json-simple:json-simple:1.1.classpath"/>
+    <path refid="library.maven:_org.uncommons:reportng:1.1.4.classpath"/>
+    <path refid="library.maven:_velocity:velocity:1.4.classpath"/>
+    <path refid="library.maven:_velocity:velocity-dep:1.4.classpath"/>
+    <path refid="library.maven:_com.google.inject:guice:4.0.classpath"/>
+    <path refid="library.maven:_javax.inject:javax.inject:1.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:16.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.6.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-all:1.3.classpath"/>
+    <path refid="library.maven:_com.github.javafaker:javafaker:0.7.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.13.classpath"/>
+  </path>
+  
+  <path id="wonolo_jri.runtime.module.classpath">
+    <pathelement location="${wonolo_jri.testoutput.dir}"/>
+    <pathelement location="${wonolo_jri.output.dir}"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.1_3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-htmlunit-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.18.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+    <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.classpath"/>
+    <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.17.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.11.0.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+    <path refid="library.maven:_net.sourceforge.nekohtml:nekohtml:1.9.22.classpath"/>
+    <path refid="library.maven:_net.sourceforge.cssparser:cssparser:0.9.16.classpath"/>
+    <path refid="library.maven:_org.w3c.css:sac:1.3.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.2.12.v20150709.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:4.1.0.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna-platform:4.1.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:2.48.2.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:2.48.2.classpath"/>
+    <path refid="library.maven:_org.webbitserver:webbit:0.4.14.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.5.2.final.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-leg-rc:2.48.2.classpath"/>
+    <path refid="library.maven:_org.testng:testng:6.9.4.classpath"/>
+    <path refid="library.maven:_org.beanshell:bsh:2.0b4.classpath"/>
+    <path refid="library.maven:_com.beust:jcommander:1.48.classpath"/>
+    <path refid="library.maven:_com.googlecode.json-simple:json-simple:1.1.classpath"/>
+    <path refid="library.maven:_org.uncommons:reportng:1.1.4.classpath"/>
+    <path refid="library.maven:_velocity:velocity:1.4.classpath"/>
+    <path refid="library.maven:_velocity:velocity-dep:1.4.classpath"/>
+    <path refid="library.maven:_com.google.inject:guice:4.0.classpath"/>
+    <path refid="library.maven:_javax.inject:javax.inject:1.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:16.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.6.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.3.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-all:1.3.classpath"/>
+    <path refid="library.maven:_com.github.javafaker:javafaker:0.7.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.13.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.wonolo_jri">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.wonolo_jri">
+    <patternset refid="excluded.from.module.wonolo_jri"/>
+  </patternset>
+  
+  <path id="wonolo_jri.module.sourcepath">
+    <dirset dir="${module.wonolo_jri.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="wonolo_jri.module.test.sourcepath">
+    <dirset dir="${module.wonolo_jri.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.wonolo_jri" depends="compile.module.wonolo_jri.production,compile.module.wonolo_jri.tests" description="Compile module wonolo_jri"/>
+  
+  <target name="compile.module.wonolo_jri.production" depends="register.custom.compilers" description="Compile module wonolo_jri; production classes">
+    <mkdir dir="${wonolo_jri.output.dir}"/>
+    <javac2 destdir="${wonolo_jri.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.wonolo_jri}/javac">
+      <compilerarg line="${compiler.args.wonolo_jri}"/>
+      <bootclasspath refid="wonolo_jri.module.bootclasspath"/>
+      <classpath refid="wonolo_jri.module.production.classpath"/>
+      <src refid="wonolo_jri.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.wonolo_jri"/>
+    </javac2>
+    
+    <copy todir="${wonolo_jri.output.dir}">
+      <fileset dir="${module.wonolo_jri.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.wonolo_jri.tests" depends="register.custom.compilers,compile.module.wonolo_jri.production" description="compile module wonolo_jri; test classes" unless="skip.tests">
+    <mkdir dir="${wonolo_jri.testoutput.dir}"/>
+    <javac2 destdir="${wonolo_jri.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.wonolo_jri}/javac">
+      <compilerarg line="${compiler.args.wonolo_jri}"/>
+      <bootclasspath refid="wonolo_jri.module.bootclasspath"/>
+      <classpath refid="wonolo_jri.module.classpath"/>
+      <src refid="wonolo_jri.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.wonolo_jri"/>
+    </javac2>
+    
+    <copy todir="${wonolo_jri.testoutput.dir}">
+      <fileset dir="${module.wonolo_jri.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.wonolo_jri" description="cleanup module">
+    <delete dir="${wonolo_jri.output.dir}"/>
+    <delete dir="${wonolo_jri.testoutput.dir}"/>
+  </target>
+</project>
