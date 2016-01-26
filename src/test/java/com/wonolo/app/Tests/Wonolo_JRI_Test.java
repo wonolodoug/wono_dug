@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Objects;
+
 import static com.wonolo.app.Wonolo.Assertions.wonolo_assertTrue;
 import static java.lang.Thread.sleep;
 
@@ -55,13 +57,13 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          driver.findElement(By.cssSelector(wage)).sendKeys(workwage);
          driver.findElement(By.cssSelector("input[value='Post Job']")).click();
          Thread.sleep(2000);
-         wonolo_assertTrue(driver.findElement(By.cssSelector(newJob)).isDisplayed(), jobName + ":  Not found in posted jobs.");
+         wonolo_assertTrue(driver.findElement(By.cssSelector("")).isDisplayed(), jobName + ":  Not found in posted jobs.");
       } catch (Exception e) {
          logError("JRIPostJob", e);
       }
       //Finally - used to clean up test data specific to a test
       finally {
-         if((driver.findElement(By.cssSelector(newJob)).isDisplayed())) {
+         if((driver.findElement(By.cssSelector("")).isDisplayed())) {
             driver.findElement(By.cssSelector("input[value='Delete Job']")).click();
          }
       }
@@ -70,18 +72,24 @@ public class Wonolo_JRI_Test extends WonoloMethods {
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
    public void JRICreateTeam(String teamName) throws Exception {
       try {
-         log(teamName);
-         //TODO: steps to create a team
-         //click teams
-         //click create first team
-         //type team name
-         //click create team
+          createTeam(teamName);
+          //Assert the team is created named as expected.
+          wonolo_assertTrue(Objects.equals(driver.findElement(By.cssSelector("p[class=team_name_string")).getText(), "Team: " + teamName), "Team name actual does not match expected.");
+          //Clean up and delete team
+          driver.findElement(By.cssSelector("span[class='request_action_new_icon icon icon_close']")).click();
+          driver.findElement(By.cssSelector("button[class='btn save_button")).click();
       } catch (Exception e) {
          logError("JRICreateTeam", e);
       }
-      finally {
-         //TODO
-         // //delete team
-      }
+   }
+
+   public void createTeam(String teamName) throws Exception  {
+       //Steps to create a new Team
+       driver.findElement(By.cssSelector("a[href='/employers/1551/teams']")).click();
+       Thread.sleep(1000);
+       driver.findElement(By.cssSelector("a[class='btn save_button with_ajax_goodness']")).click();
+       Thread.sleep(1000);
+       driver.findElement(By.cssSelector("input[id=team_name]")).sendKeys(teamName);
+       driver.findElement(By.cssSelector("input[id=create_team_modal]")).click();
    }
 }
