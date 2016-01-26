@@ -74,22 +74,17 @@ public class Wonolo_JRI_Test extends WonoloMethods {
       try {
           createTeam(teamName);
           //Assert the team is created named as expected.
-          wonolo_assertTrue(Objects.equals(driver.findElement(By.cssSelector("p[class=team_name_string")).getText(), "Team: " + teamName), "Team name actual does not match expected.");
+          wonolo_assertTrue(Objects.equals(driver.findElement(By.cssSelector(savedTeamName)).getText(),
+                  "Team: " + teamName), "Team name actual does not match expected.");
           //Clean up and delete team
-          driver.findElement(By.cssSelector("span[class='request_action_new_icon icon icon_close']")).click();
-          driver.findElement(By.cssSelector("button[class='btn save_button")).click();
+          //<span class="request_action_new_label hide_on_narrow" style="display: none;">Edit</span>
+          //<span class="request_action_new_label hide_on_narrow" style="display: none;">Delete</span>
+          driver.findElement(By.xpath("(//span[@class='request_action_new_label hide_on_narrow'])[2]")).click();
+          //driver.findElement(By.cssSelector("span[class='request_action_new_label hide_on_narrow']")).click();
+          Thread.sleep(1500);
+          driver.findElement(By.cssSelector("button[class='btn save_button confirm")).click();
       } catch (Exception e) {
          logError("JRICreateTeam", e);
       }
-   }
-
-   public void createTeam(String teamName) throws Exception  {
-       //Steps to create a new Team
-       driver.findElement(By.cssSelector("a[href='/employers/1551/teams']")).click();
-       Thread.sleep(1000);
-       driver.findElement(By.cssSelector("a[class='btn save_button with_ajax_goodness']")).click();
-       Thread.sleep(1000);
-       driver.findElement(By.cssSelector("input[id=team_name]")).sendKeys(teamName);
-       driver.findElement(By.cssSelector("input[id=create_team_modal]")).click();
    }
 }

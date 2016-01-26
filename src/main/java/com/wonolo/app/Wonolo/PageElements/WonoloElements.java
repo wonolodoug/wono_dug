@@ -5,8 +5,10 @@ import com.wonolo.app.Wonolo.WonoloDriver;
 import org.openqa.selenium.By;
 
 public class WonoloElements extends WonoloDriver {
+    //base url
     public static String jri_url = "https://test.wonolo.com/jobs";
 
+    //job elements
     public static String username = "input[id=user_email]";
     public static String pwd = "input[id=user_password]";
     public static String signin = "input[name=commit]";
@@ -20,4 +22,12 @@ public class WonoloElements extends WonoloDriver {
     public static String city = "input[id=job_request_city]";
     public static String zip = "input[id=job_request_zip]";
     public static String wage = "input[id=job_request_wage]";
+
+    //team elements
+    public static String addTeam = "a[href='/employers/1551/teams']";
+    public static String addFirstTeam = "a[class='btn save_button with_ajax_goodness']";
+    public static String addTeamName = "input[id=team_name]";
+    public static String saveTeam = "input[id=create_team_modal]";
+    public static String savedTeamName = "p[class=team_name_string";
+
 }

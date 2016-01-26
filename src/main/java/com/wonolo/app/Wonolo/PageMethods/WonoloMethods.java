@@ -72,10 +72,14 @@ public class WonoloMethods extends WonoloElements {
         driver.findElement(By.cssSelector(signin)).click();
     }
 
-    // For logout with assertions use Logout_Test this method is meant to be
-    // fast
-    public void logOut() throws Exception {
-
+    public void createTeam(String teamName) throws Exception  {
+        //Steps to create a new Team
+        driver.findElement(By.cssSelector(addTeam)).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(addFirstTeam)).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector(addTeamName)).sendKeys(teamName);
+        driver.findElement(By.cssSelector(saveTeam)).click();
     }
 
 }
