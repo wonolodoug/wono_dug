@@ -2,12 +2,16 @@ package com.wonolo.app.Tests;
 
 import com.Wonolo_JRI_Parameters.JRIPostJobDataproviderClass;
 import com.wonolo.app.Wonolo.PageMethods.WonoloMethods;
+//import com.wonolo.app.Wonolo.Assertions.wonolo_assertTrue;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import static com.wonolo.app.Wonolo.Assertions.wonolo_assertTrue;
+import static java.lang.Thread.sleep;
 
 
 public class Wonolo_JRI_Test extends WonoloMethods {
@@ -34,25 +38,32 @@ public class Wonolo_JRI_Test extends WonoloMethods {
    }
 
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
-   public void JRIPostJob(String jobName) throws Exception {
+   public void JRIPostJob(String jobName, String tasks, String slots, String workvenue, String workaddress, String workcity, String workzip, String workwage) throws Exception {
       try {
          log(jobName);
-         //TODO:  steps to post a job
-         //TODO:  click add job
-         //TODO:  add job info -- start/end date
-         //TODO:  click save job
-         //TODO:  click post job
-         //TODO:  wono_assertTrue job appers in active posted jobs
-         driver.findElement(By.cssSelector(signin)).click();
-         Thread.sleep(1000);
+         driver.findElement(By.cssSelector(newJob)).click();
+         //We can put a WaitforElement in later, for now using thread.sleep to wait for form load
+         Thread.sleep(2000);
+         driver.findElement(By.cssSelector(requestName)).sendKeys(jobName);
+         driver.findElement(By.cssSelector(desTasks)).sendKeys(tasks);
+         driver.findElement(By.cssSelector(numSlots)).sendKeys(slots);
+         driver.findElement(By.cssSelector(venue)).sendKeys(workvenue);
+         driver.findElement(By.cssSelector(address)).sendKeys(workaddress);
+         driver.findElement(By.cssSelector(city)).sendKeys(workcity);
+         driver.findElement(By.cssSelector(zip)).sendKeys(workzip);
+         //to do dates//date//duaration hours//duration mins
+         driver.findElement(By.cssSelector(wage)).sendKeys(workwage);
+         driver.findElement(By.cssSelector("input[value='Post Job']")).click();
+         Thread.sleep(2000);
+         wonolo_assertTrue(driver.findElement(By.cssSelector(newJob)).isDisplayed(), jobName + ":  Not found in posted jobs.");
       } catch (Exception e) {
          logError("JRIPostJob", e);
       }
       //Finally - used to clean up test data specific to a test
       finally {
-         //TODO:clean up -- if job exists, delete the new job,
-         //TODO: otherwise do no cleanup the test failed before the job was created
-         //TODO: wono_ssertTrue -- job does not appear in posted jobs
+         if((driver.findElement(By.cssSelector(newJob)).isDisplayed())) {
+            driver.findElement(By.cssSelector("input[value='Delete Job']")).click();
+         }
       }
    }
 
@@ -61,13 +72,16 @@ public class Wonolo_JRI_Test extends WonoloMethods {
       try {
          log(teamName);
          //TODO: steps to create a team
-         driver.findElement(By.cssSelector(signin)).click();
-         Thread.sleep(1000);
+         //click teams
+         //click create first team
+         //type team name
+         //click create team
       } catch (Exception e) {
          logError("JRICreateTeam", e);
       }
       finally {
          //TODO
+         // //delete team
       }
    }
 }

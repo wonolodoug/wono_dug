@@ -118,9 +118,9 @@ public class Client_Requests {
       String curl = "curl -X " + requestType + " " + url + " -i";
       for (Header header : headers) {
          curl += " -H " + header;
-      }
-      log(curl);
+      }log(curl);
    }
+
 
    private HttpResponse executeRequest(HttpUriRequest request) throws Exception {
       response = client.execute(request);
