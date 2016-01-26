@@ -48,7 +48,7 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          driver.findElement(By.cssSelector(address)).sendKeys(workaddress);
          driver.findElement(By.cssSelector(city)).sendKeys(workcity);
          driver.findElement(By.cssSelector(zip)).sendKeys(workzip);
-         //to do dates//date//duaration hours//duration mins
+         //to do dates//date//duration hours//duration mins
          driver.findElement(By.cssSelector(wage)).sendKeys(workwage);
          driver.findElement(By.cssSelector("input[value='Post Job']")).click();
          Thread.sleep(2000);
