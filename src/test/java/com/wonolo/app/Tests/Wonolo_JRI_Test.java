@@ -2,18 +2,12 @@ package com.wonolo.app.Tests;
 
 import com.Wonolo_JRI_Parameters.JRIPostJobDataproviderClass;
 import com.wonolo.app.Wonolo.PageMethods.WonoloMethods;
-//import com.wonolo.app.Wonolo.Assertions.wonolo_assertTrue;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.Objects;
-
 import static com.wonolo.app.Wonolo.Assertions.wonolo_assertTrue;
-import static java.lang.Thread.sleep;
+import java.util.Objects;
 
 
 public class Wonolo_JRI_Test extends WonoloMethods {
