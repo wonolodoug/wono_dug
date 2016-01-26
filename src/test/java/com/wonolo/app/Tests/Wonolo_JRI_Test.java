@@ -39,6 +39,7 @@ public class Wonolo_JRI_Test extends WonoloMethods {
       driver.close();
    }
 
+    //Post a new Job
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
    public void JRIPostJob(String jobName, String tasks, String slots, String workvenue, String workaddress, String workcity, String workzip, String workwage) throws Exception {
       try {
@@ -69,6 +70,7 @@ public class Wonolo_JRI_Test extends WonoloMethods {
       }
    }
 
+   //Create a New Team and Verify it Successfully is saved.
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
    public void JRICreateTeam(String teamName) throws Exception {
       try {
@@ -77,12 +79,7 @@ public class Wonolo_JRI_Test extends WonoloMethods {
           wonolo_assertTrue(Objects.equals(driver.findElement(By.cssSelector(savedTeamName)).getText(),
                   "Team: " + teamName), "Team name actual does not match expected.");
           //Clean up and delete team
-          //<span class="request_action_new_label hide_on_narrow" style="display: none;">Edit</span>
-          //<span class="request_action_new_label hide_on_narrow" style="display: none;">Delete</span>
-          driver.findElement(By.xpath("(//span[@class='request_action_new_label hide_on_narrow'])[2]")).click();
-          //driver.findElement(By.cssSelector("span[class='request_action_new_label hide_on_narrow']")).click();
-          Thread.sleep(1500);
-          driver.findElement(By.cssSelector("button[class='btn save_button confirm")).click();
+          deleteTeam();
       } catch (Exception e) {
          logError("JRICreateTeam", e);
       }

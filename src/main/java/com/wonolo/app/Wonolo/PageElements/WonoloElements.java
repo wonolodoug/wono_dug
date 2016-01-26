@@ -29,5 +29,7 @@ public class WonoloElements extends WonoloDriver {
     public static String addTeamName = "input[id=team_name]";
     public static String saveTeam = "input[id=create_team_modal]";
     public static String savedTeamName = "p[class=team_name_string";
+    public static String deleteTeam = "(//span[@class='request_action_new_label hide_on_narrow'])[2]";
+    public static String confirmTeamDelete = "button[class='btn save_button confirm";
 
 }
