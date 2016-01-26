@@ -80,6 +80,17 @@ public class WonoloMethods extends WonoloElements {
         }
     }
 
+    public void createJob(String jobName, String tasks, String slots, String workvenue, String workaddress, String workcity, String workzip, String workwage) throws Exception {
+        Thread.sleep(2000);
+        driver.findElement(By.cssSelector(requestName)).sendKeys(jobName);
+        driver.findElement(By.cssSelector(desTasks)).sendKeys(tasks);
+        driver.findElement(By.cssSelector(numSlots)).sendKeys(slots);
+        driver.findElement(By.cssSelector(venue)).sendKeys(workvenue);
+        driver.findElement(By.cssSelector(address)).sendKeys(workaddress);
+        driver.findElement(By.cssSelector(city)).sendKeys(workcity);
+        driver.findElement(By.cssSelector(zip)).sendKeys(workzip);
+        driver.findElement(By.cssSelector(wage)).sendKeys(workwage);
+    }
     //Team methoda
     public void createTeam(String teamName) throws Exception  {
         //Steps to create a new Team
