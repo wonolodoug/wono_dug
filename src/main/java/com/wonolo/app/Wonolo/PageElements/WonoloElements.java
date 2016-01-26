@@ -8,28 +8,38 @@ public class WonoloElements extends WonoloDriver {
     //base url
     public static String jri_url = "https://test.wonolo.com/jobs";
 
-    //job elements
-    public static String username = "input[id=user_email]";
-    public static String pwd = "input[id=user_password]";
+    //Job elements
+    //Sign in
+    public static String username = "input[id*=email]";
+    public static String pwd = "input[id*=password]";
     public static String signin = "input[name=commit]";
+
+    //Home page
     public static String newJob = "a[id=new_request_button]";
-    public static String requestName = "input[id=job_request_request_name]";
 
-    public static String desTasks = "textarea[id=job_request_description_tasks]";
-    public static String numSlots = "input[id=job_request_slots]";
-    public static String venue = "input[id=job_request_venue]";
-    public static String address = "input[id=job_request_address]";
-    public static String city = "input[id=job_request_city]";
-    public static String zip = "input[id=job_request_zip]";
-    public static String wage = "input[id=job_request_wage]";
+    //Post job
+    public static String requestName = "input[id*=request_name]";
+    public static String desTasks = "textarea[id*=description_tasks]";
+    public static String numSlots = "input[id*=slots]";
+    public static String venue = "input[id*=venue]";
+    public static String address = "input[id*=address]";
+    public static String city = "input[id*=city]";
+    public static String zip = "input[id*=zip]";
+    public static String wage = "input[id*=wage]";
+    public static String postJob = "input[value='Post Job']";
 
-    //team elements
+    public static String job_title = "td[class=job_title]";
+    public static String deleteJob = "span[class='request_action_new_icon icon icon-close']";
+
+    //Team elements
     public static String addTeam = "a[href='/employers/1551/teams']";
     public static String addFirstTeam = "a[class='btn save_button with_ajax_goodness']";
     public static String addTeamName = "input[id=team_name]";
     public static String saveTeam = "input[id=create_team_modal]";
     public static String savedTeamName = "p[class=team_name_string";
     public static String deleteTeam = "(//span[@class='request_action_new_label hide_on_narrow'])[2]";
-    public static String confirmTeamDelete = "button[class='btn save_button confirm";
+
+    //Popup dialog elements
+    public static String confirmDelete = "button[class='btn save_button confirm";
 
 }
