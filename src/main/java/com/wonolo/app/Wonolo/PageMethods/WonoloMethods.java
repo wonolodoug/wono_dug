@@ -72,6 +72,14 @@ public class WonoloMethods extends WonoloElements {
         driver.findElement(By.cssSelector(signin)).click();
     }
 
+    public void deleteJob() throws Exception {
+        if((driver.findElement(By.cssSelector(job_title)).isDisplayed())) {
+            driver.findElement(By.cssSelector(deleteJob)).click();
+            Thread.sleep(1500);
+            driver.findElement(By.cssSelector(confirmDelete)).click();
+        }
+    }
+
     //Team methoda
     public void createTeam(String teamName) throws Exception  {
         //Steps to create a new Team
@@ -86,6 +94,6 @@ public class WonoloMethods extends WonoloElements {
     public void deleteTeam() throws Exception {
         driver.findElement(By.xpath(deleteTeam)).click();
         Thread.sleep(1500);
-        driver.findElement(By.cssSelector(confirmTeamDelete)).click();
+        driver.findElement(By.cssSelector(confirmDelete)).click();
     }
 }

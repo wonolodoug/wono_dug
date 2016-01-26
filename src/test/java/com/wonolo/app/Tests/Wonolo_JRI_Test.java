@@ -37,9 +37,8 @@ public class Wonolo_JRI_Test extends WonoloMethods {
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
    public void JRIPostJob(String jobName, String tasks, String slots, String workvenue, String workaddress, String workcity, String workzip, String workwage) throws Exception {
       try {
-         log(jobName);
          driver.findElement(By.cssSelector(newJob)).click();
-         //We can put a WaitforElement in later, for now using thread.sleep to wait for form load
+         //wait for job form to load
          Thread.sleep(2000);
          driver.findElement(By.cssSelector(requestName)).sendKeys(jobName);
          driver.findElement(By.cssSelector(desTasks)).sendKeys(tasks);
@@ -48,21 +47,19 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          driver.findElement(By.cssSelector(address)).sendKeys(workaddress);
          driver.findElement(By.cssSelector(city)).sendKeys(workcity);
          driver.findElement(By.cssSelector(zip)).sendKeys(workzip);
-         //to do dates//date//duration hours//duration mins
          driver.findElement(By.cssSelector(wage)).sendKeys(workwage);
-         driver.findElement(By.cssSelector("input[value='Post Job']")).click();
+         driver.findElement(By.cssSelector(postJob)).click();
          Thread.sleep(2000);
-         wonolo_assertTrue(driver.findElement(By.cssSelector("")).isDisplayed(), jobName + ":  Not found in posted jobs.");
+         wonolo_assertTrue(Objects.equals(driver.findElement(By.cssSelector(job_title)).getText(),
+                 jobName), jobName + ":  Not found in posted jobs.");
       } catch (Exception e) {
          logError("JRIPostJob", e);
       }
       //Finally - used to clean up test data specific to a test
       finally {
-         if((driver.findElement(By.cssSelector("")).isDisplayed())) {
-            driver.findElement(By.cssSelector("input[value='Delete Job']")).click();
+         deleteJob();
          }
       }
-   }
 
    //Create a New Team and Verify it Successfully is saved.
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
