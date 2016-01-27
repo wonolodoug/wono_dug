@@ -18,15 +18,25 @@ public class JRIPostJobDataproviderClass {
                    {""}
            };
        }
+       if (m.getName().equalsIgnoreCase("JRIPostJobWages")) {
+           return new Object[][]{
+                   {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","500.95"},
+                   {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045",".95"},
+                   {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045",".5"},
+                   {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","5000000"}
+                   //{WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","0"},
+                   //{WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045",""}
+           };
+       }
+       if (m.getName().equalsIgnoreCase("JRIPostJobMissingRequiredField")) {
+           return new Object[][]{
+                   {""}
+           };
+       }
       else {
          return new Object[][]{
                  {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","131 Chosen Meatball St.","San Ramon","94583","500"},
-                 {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","0"},
-                 {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","5000000"},
-                 //Enter dollars and cents, this case fails
-                 //{WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","500.95"},
-                 //No tasks entered, causes an error message
-                 //{"","","1","testVenue","61 Taylor St.","San Francisco","94045","0"}
+                 {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","500"},
                  {"","Some of the many tasks I do!","1","testVenue","61 Taylor St.","San Francisco","94045","0"}
          };
       }
