@@ -53,6 +53,24 @@ public class Wonolo_JRI_Test extends WonoloMethods {
          }
       }
 
+    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
+    public void JRIPostJobWages(String jobName, String tasks, String slots, String workvenue, String workaddress, String workcity, String workzip, String workwage) throws Exception {
+        try {
+            driver.findElement(By.cssSelector(newJob)).click();
+            //wait for job form to load, complete form data, post job
+            createJob(jobName, tasks, slots, workvenue, workaddress, workcity, workzip, workwage);
+            driver.findElement(By.cssSelector(postJob)).click();
+            Thread.sleep(2000);
+            wonolo_assertTrue(Objects.equals(driver.findElement(By.cssSelector(job_title)).getText(),
+                    jobName), jobName + ":  Not found in posted jobs.");
+        } catch (Exception e) {
+            logError("JRIPostJob", e);
+        }
+        //Finally - used to clean up test data specific to a test
+        finally {
+            deleteJob();
+        }
+    }
 
    //Create a New Team and Verify it Successfully is saved.
    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
