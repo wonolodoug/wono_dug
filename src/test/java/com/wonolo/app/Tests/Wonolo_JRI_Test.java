@@ -69,4 +69,15 @@ public class Wonolo_JRI_Test extends WonoloMethods {
           deleteTeam();
       }
    }
+
+    @Test(groups = {"wonoloJRI"}, dataProvider="JRIPostJobProvider", dataProviderClass= JRIPostJobDataproviderClass.class)
+    public void JRICreateTeamNoName(String teamName) throws Exception {
+        try {
+            createTeam(teamName);
+            //This assertion verifies a team with no name could not be saved
+            wonolo_assertTrue(driver.findElement(By.cssSelector("a[href='/job_requests']")).isDisplayed(), "Expected behavior when team name not entered not followed");
+        } catch (Exception e) {
+            logError("JRICreateTeam", e);
+        }
+    }
 }

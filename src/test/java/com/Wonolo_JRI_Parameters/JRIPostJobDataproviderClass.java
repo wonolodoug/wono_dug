@@ -13,6 +13,11 @@ public class JRIPostJobDataproviderClass {
                {WonoloMethods.random("testTeam")}
          };
       }
+       if (m.getName().equalsIgnoreCase("JRICreateTeamNoName")) {
+           return new Object[][]{
+                   {""}
+           };
+       }
       else {
          return new Object[][]{
                  {WonoloMethods.random("testJob"),"Some of the many tasks I do!","1","testVenue","131 Chosen Meatball St.","San Ramon","94583","500"},
